@@ -4,30 +4,21 @@ using Users.Models;
 
 namespace Users.Infrastructure
 {
-    public class AppIndentityDbContext:IdentityDbContext<AppUser>
+    public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        public AppIndentityDbContext():base("IdentityDb")
+        public AppIdentityDbContext():base("IdentityDb")
         {
 
         }
 
-        static AppIndentityDbContext()
+        static AppIdentityDbContext()
         {
-            Database.SetInitializer<AppIndentityDbContext>(new IdentityDbInit());
-        }
-    }
-
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIndentityDbContext>
-    {
-        protected override void Seed(AppIndentityDbContext context)
-        {
-            PerformInitialSetup(context);
-            base.Seed(context);
+            Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
         }
 
-        public void PerformInitialSetup(AppIndentityDbContext context)
+        public static AppIdentityDbContext Create()
         {
-            
+            return new AppIdentityDbContext();
         }
     }
 }

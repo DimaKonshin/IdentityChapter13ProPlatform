@@ -16,7 +16,7 @@ namespace Users.Infrastructure
 
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
-            AppIndentityDbContext db = context.Get<AppIndentityDbContext>();
+            AppIdentityDbContext db = context.Get<AppIdentityDbContext>();
             AppUserManager manager = new AppUserManager(new UserStore<AppUser>(db));
             return manager;
         }
